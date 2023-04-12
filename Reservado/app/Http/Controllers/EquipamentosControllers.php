@@ -85,7 +85,7 @@ class EquipamentosControllers extends Controller
         $equipamento = Equipamento::findOrFail($equipamento->id);
         if ($equipamento->delete()) {
            $tipo = 'mensagem_sucesso';
-           $msg = 'Equipamento Excluido !';
+           $msg = 'Equipamento Excluido!';
         } else {
             $tipo = 'Mensagem erro!';
             $msg = 'Deu erro!';
