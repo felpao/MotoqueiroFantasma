@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\EquipamentosControllers;
 use App\Http\Controllers\LocaisController;
+use App\Http\Controllers\ReservasController;
 use App\Http\Controllers\TiposController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -24,7 +26,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/tipo', [TiposController::class, 'listar']);
+Route::get('/tipo', [TiposController::class, 'listar'])->name('listar.tipos');
 Route::get('/tipo/create', [TiposController::class, 'create']);
 Route::get('/tipo/{tipo_id}', [TiposController::class, 'show']);
 Route::post('tipo', [TiposController::class, 'store']);
@@ -33,4 +35,7 @@ Route::delete('/tipo/{tipo_id}', [TiposController::class, 'deletar']);
 
 Route::resource('local', LocaisController::class);
 Route::resource('equipamento', EquipamentosControllers::class);
+Route::resource('cliente', ClientesController::class);
+Route::resource('reserva', ReservasController::class);
+Route::get('reserva.reserva/{id}', [ReservasController::class, 'devolucao'])->name('reservas.devolucao');
 
