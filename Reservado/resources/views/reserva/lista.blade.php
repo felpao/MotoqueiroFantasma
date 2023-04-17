@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">
                     Lista das Reservas
-                    <a href="{{ route('reservas.create') }}" class="btn btn-success btn-sm float-end">
+                    <a href="{{ route('reserva.create') }}" class="btn btn-success btn-sm float-end">
                         Nova Reserva
                     </a>
                 </div>
@@ -39,21 +39,21 @@
                                 <td>{{ $reserva->local->nome }}</td>
                                 <td>{{ $reserva->cliente->nome }}</td>
                                 <td class="d-flex">
-                                    <a href="{{ route('reservas.show', $reserva->id) }}"
+                                    <a href="{{ route('reserva.show', $reserva->id) }}"
                                         class="btn btn-primary btn-sm mx-1">
                                         Editar
                                     </a>
 
                                     {!! Form::open([
                                     'method' => 'DELETE',
-                                    'url' => route('reservas.destroy', $reserva->id),
+                                    'url' => route('reserva.destroy', $reserva->id),
                                     'style' => 'display:inline',
                                     ]) !!}
                                     <button type="submit" class="btn btn-danger btn-sm mx-1">
                                         Excluir
                                     </button>
                                     {!! Form::close() !!}
-                                    <a href="{{ route('reservas.devolucao', $reserva->id) }}"
+                                    <a href="{{ route('reserva.devolucao', $reserva->id) }}"
                                         class="btn btn-info btn-sm mx-1">
                                         Devolver
                                     </a>

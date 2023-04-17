@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">
                     Dados da Reserva
-                    <a href="{{ route('reservas.index') }}" class="btn btn-success btn-sm float-end">
+                    <a href="{{ route('reserva.index') }}" class="btn btn-success btn-sm float-end">
                         Listar Reservas
                     </a>
                 </div>
@@ -22,12 +22,12 @@
                         {{ Session::get('menssagem_erro') }}
                     </div>
                     @endif
-                    @if(Route::is('reservas.show'))
+                    @if(Route::is('reserva.show'))
                     {!! Form::model($reserva,['method'=>'PATCH','url' =>
-                    route('reservas.update',$reserva->id)]) !!}
+                    route('reserva.update',$reserva->id)]) !!}
 
                     @else
-                    {!! Form::open(['method'=>'POST','url' => route('reservas.store')]) !!}
+                    {!! Form::open(['method'=>'POST','url' => route('reserva.store')]) !!}
 
                     @endif
 

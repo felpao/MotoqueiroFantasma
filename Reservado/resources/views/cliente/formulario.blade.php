@@ -33,9 +33,9 @@
                     {!! Form::label('nome','Nome') !!}
                     {!! Form::input('text','nome',null,['class'=>'form-control
                     mb-3','placeholder'=>'Nome','required','maxlenght'=>50,'autofocus']) !!}
-                    {!! Form::label('endereco','Endereço') !!}
+                    {!! Form::label('enderecos','Endereço') !!}
                     {!!
-                    Form::input('text','endereco',null,['class'=>'form-control','placeholder'=>'Endereco','required'])
+                    Form::input('text','enderecos',null,['class'=>'form-control','placeholder'=>'Endereco','required'])
                     !!}
                     {!! Form::label('fone','Telefone') !!}
                     {!!

@@ -48,7 +48,7 @@
                             <a href="{{ route('cliente.index') }}" class="nav-link">Clientes</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('reserva  .index') }}" class="nav-link">Reservas</a>
+                            <a href="{{ route('reserva.index') }}" class="nav-link">Reservas</a>
                         </li>
                         @endauth
                     </ul>

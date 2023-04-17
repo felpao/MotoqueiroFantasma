@@ -13,9 +13,9 @@
                 </div>
                 <div class="card-body">
                     @if (Session::has('menssagem_sucesso'))
-                    <div class="alert alert-success" role="alert">
-                        {{ Session::get('menssagem_sucesso') }}
-                    </div>
+                        <div class="alert alert-success" role="alert">
+                            {{ Session::get('menssagem_sucesso') }}
+                        </div>
                     @endif
                     <table class="table table-sm table-hover table-bordered">
                         <thead>
@@ -60,7 +60,7 @@
                         </tbody>
                     </table>
                     <div class="pagination justify-content-center">
-                        {{ $cliente->links() }}
+                        {{ $clientes->links() }}
                     </div>
                 </div>
             </div>

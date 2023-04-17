@@ -22,24 +22,29 @@ class ClientesController extends Controller
 
     }
 
-    public function store(Request $request){
+    public function store(Request $request,Cliente $cliente){
+
+
         $cliente = new Cliente();
         $cliente->fill($request->all());
-        if ($cliente->save()){;
-        $request->session()->flash('mensagem_sucesso',"Cliente salvo!");
-        }else{
-        $request->session()->flash('mensagem_erro',"Deu erro!");
+        if ($cliente->save()) {
+            $tipo = 'mensagem_sucesso';
+            $msg = 'Equipamento Excluido !';
+        } else {
+            $tipo = 'Mensagem erro!';
+            $msg = 'Deu erro!';
+
         }
-        return Redirect::to('cliente/create');
+        return Redirect::to('/cliente')->with($tipo,$msg);
     }
 
     public function update(Request $request, $cliente_id){
         $cliente = Cliente::findOrFail($cliente_id);
         $cliente->fill($request->all());
         if ($cliente->save()){;
-        $request->session()->flash('mensagem_sucesso',"Cliente alterado!");
+            $request->session()->flash('mensagem_sucesso',"Cliente alterado!");
         }else{
-        $request->session()->flash('mensagem_erro',"Deu erro!");
+            $request->session()->flash('mensagem_erro',"Deu erro!");
         }
         return Redirect::to('cliente/'.$cliente->id);
     }

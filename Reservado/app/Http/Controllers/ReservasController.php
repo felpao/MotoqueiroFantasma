@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
-use App\Models\Clientes;
 use App\Models\Equipamento;
 use App\Models\Local;
 use App\Models\Reserva;
@@ -38,7 +37,7 @@ class ReservasController extends Controller
         $equipamentos = Equipamento::select('nome','id')->pluck('nome','id');
         $locais = Local::select('nome','id')->pluck('nome','id');
 
-        return view('app.modules.reserva.formulario',compact('clientes','equipamentos','locais'));
+        return view('reserva.formulario',compact('clientes','equipamentos','locais'));
     }
 
     /**
@@ -59,17 +58,19 @@ class ReservasController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($reserva)
+    public function show($id)
     {
 
-        $reserva = Reserva::findOrFail($reserva);
 
-        $clientes = Clientes::select('nome','id')->pluck('nome','id');
-        $equipamentos = Equipamentos::select('nome','id')->pluck('nome','id');
+        $reserva = Reserva::findOrFail($id);
+
+        $clientes = Cliente::select('nome','id')->pluck('nome','id');
+        $equipamentos = Equipamento::select('nome','id')->pluck('nome','id');
         $locais = Local::select('nome','id')->pluck('nome','id');
 
-        return view('app.modules.reserva.formulario',
-        compact('reserva','clientes','equipamentos','locais'));
+
+        return view('reserva.formulario',compact('reserva','clientes','equipamentos','locais'));
+
     }
 
     /**
@@ -79,12 +80,12 @@ class ReservasController extends Controller
     {
         $reserva = Reserva::findOrFail($reserva);
 
-        $clientes = Clientes::select('nome','id')->pluck('nome','id');
-        $equipamentos = Equipamentos::select('nome','id')->pluck('nome','id');
+        $clientes = Cliente::select('nome','id')->pluck('nome','id');
+        $equipamentos = Equipamento::select('nome','id')->pluck('nome','id');
         $locais = Local::select('nome','id')->pluck('nome','id');
 
-        return view('app.modules.reserva.formulario',
-        compact('reserva','clientes','equipamentos','locais'));
+        return view('reserva.formulario');
+        compact('reserva','clientes','equipamentos','locais');
     }
 
     /**

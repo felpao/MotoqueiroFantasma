@@ -25,23 +25,14 @@ class Reserva extends Model
     public $timestamps = true;
 
 
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($query) {
-            $query->uuid = Uuid::uuid4();
-        });
-    }
-
     public function equipamento(){
-        return $this->belongsTo(Equipamentos::class,'equipamento_id');
+        return $this->belongsTo(Equipamento::class,'equipamento_id');
     }
     public function local(){
         return $this->belongsTo(Local::class,'local_id');
     }
     public function cliente(){
-        return $this->belongsTo(Clientes::class,'cliente_id');
+        return $this->belongsTo(Cliente::class,'cliente_id');
     }
 
 }

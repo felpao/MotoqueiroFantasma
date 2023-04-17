@@ -19,14 +19,6 @@ class Cliente extends Model
         'fone'
     ];
 
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($query) {
-            $query->uuid = Uuid::uuid4();
-        });
-    }
 
 
 }
