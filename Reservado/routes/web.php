@@ -33,9 +33,9 @@ Route::post('tipo', [TiposController::class, 'store']);
 Route::patch('/tipo/{tipo/id}', [TiposController::class, 'update']);
 Route::delete('/tipo/{tipo_id}', [TiposController::class, 'deletar']);
 
+Route::get('reserva/reserva/{id}', [ReservasController::class, 'devolucao'])->name('reservas.devolucao');
 Route::resource('local', LocaisController::class);
 Route::resource('equipamento', EquipamentosControllers::class);
 Route::resource('cliente', ClientesController::class);
 Route::resource('reserva', ReservasController::class);
-Route::get('reserva.reserva/{id}', [ReservasController::class, 'devolucao'])->name('reservas.devolucao');
 
