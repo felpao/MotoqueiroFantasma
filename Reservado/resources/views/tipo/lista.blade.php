@@ -1,23 +1,24 @@
 @extends('layouts.app')
+
 @section('content')
-<div class="container">
+    <div class="container">
         <div class="row justify-contant-center">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
                         Lista de tipos
-                            <a href="{{ url('tipo/create') }}" class="btn btn-success btn-sm float-end">
-                            Novo Local
-                            </a>
+                        <a href="{{ url('tipo/create') }}" class="btn btn-success btn-sm float-end">
+                            Novo tipo
+                        </a>
 
                     </div>
 
                     <div class="card-body">
-                        @if(Session::has('mensagem_sucesso'))
+                        @if (Session::has('mensagem_sucesso'))
                             <div class="alert alert-success">
                                 {{ Session::get('mensagem_sucesso') }}
                             </div>
-                            @endif
+                        @endif
                         <table class="table sn table-hover table-bordered">
                             <thead>
                                 <tr>
@@ -28,43 +29,47 @@
                             </thead>
                             <tbody>
                                 @forelse ($tipos as $tipo)
-                                <tr>
-                                    <td>{{ $tipo->id }}</td>
-                                    <td>{{ $tipo->nome }}</td>
-                                    <td>
-                                        <a href="{{ url('tipo/'.$tipo->id) }}"
-                                            class="btn btn-primary btn-sm">
-                                            Editar
-                                        </a>
-                                        {!! Form::open([
-                                            'method'=>'DELETE',
-                                            'url'=>'tipo/'.$tipo->id, 'style'=>'display:inline'
-                                        ]) !!}
-                                        <button type="submit" class="btn btn-danger btn-sm">
-                                            Excluir
-                                        </button>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td>{{ $tipo->id }}</td>
+                                        <td>{{ $tipo->titulo }}</td>
+                                        <td>
+                                            <a href="{{ url('tipo/' . $tipo->id) }}" class="btn btn-primary btn-sm">
+                                                Editar
+                                            </a>
+                                            {!! Form::open([
+                                                'method' => 'DELETE',
+                                                'url' => 'tipo/' . $tipo->id,
+                                                'style' => 'display:inline',
+                                            ]) !!}
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                Excluir
+                                            </button>
+                                        </td>
+                                    </tr>
                                 @empty
-                                <tr>
-                                    <td colspan="3">
-                                        Não há itens para listar!
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            Não há itens para listar!
+                                        </td>
+                                    </tr>
                                 @endforelse
                             </tbody>
                         </table>
-                    <div class='pagination justify-contente-center'>
-                        {{ $tipos->links() }}
+                        <div class='pagination justify-contente-center'>
+                            {{ $tipos->links() }}
+                        </div>
+
+
                     </div>
-
-
+                    <div class="card-footer">
+                        <a href="{{ url('tipo/report') }}" target="_blank"
+                         class="btn btn-sm btn-warning">
+                            Relatório
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
 
-</div>
+    </div>
 @endsection
-
-

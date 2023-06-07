@@ -28,10 +28,12 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/tipo', [TiposController::class, 'listar'])->name('listar.tipos');
 Route::get('/tipo/create', [TiposController::class, 'create']);
-Route::get('/tipo/{tipo_id}', [TiposController::class, 'show']);
+Route::get('/tipo/report', [TiposController::class, 'showReport']);
+Route::get('/tipo/{tipo_id}', [TiposController::class, 'show'])->name('tipo.show');
 Route::post('tipo', [TiposController::class, 'store']);
-Route::patch('/tipo/{tipo/id}', [TiposController::class, 'update']);
+Route::patch('/tipo/{tipo_id}', [TiposController::class, 'update']);
 Route::delete('/tipo/{tipo_id}', [TiposController::class, 'deletar']);
+
 
 Route::get('reserva/reserva/{id}', [ReservasController::class, 'devolucao'])->name('reserva.devolucao');
 Route::resource('local', LocaisController::class);

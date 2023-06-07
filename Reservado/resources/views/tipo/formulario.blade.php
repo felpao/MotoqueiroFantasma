@@ -5,9 +5,9 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        Lista de locais
-                            <a href="{{ url('local') }}" class="btn btn-success btn-sm float-end">
-                            Listar locais
+                        Lista de tipos
+                            <a href="{{ url('tipo') }}" class="btn btn-success btn-sm float-end">
+                            Listar tipos
                             </a>
 
                     </div>
@@ -23,19 +23,29 @@
                                 {{ Session::get('mensagem_erro') }}
                             </div>
                         @endif
-                        @if(Route::is('local.show'))
-                            {!! Form::model(local,
-                                            ['method'=>'PATCH']
-                                            'url'=>'local/'.$local->id) !!}
+                        @if(Route::is('tipo.show'))
+                            {!! Form::model($tipo,
+                                            ['method'=>'PATCH',
+                                            'files'=>'True',
+                                            'url'=>'tipo/'.$tipo->id]) !!}
+                            <div class="text-center">
+                                <img
+                                src="{{ url('/') }}/uploads/tipos/{{ $tipo->icone }}"
+                                alt="{{ $tipo->titulo }}"
+                                title="{{ $tipo->titulo }}"
+                                class="img-thumbnail"
+                                width="150"/>
+                            </div>
                         @else
-                        {!! Form::open(['method'=>'POST', 'url'=>'local']) !!}
+                        {!! Form::open(['method'=>'POST','files'=>'True', 'url'=>'tipo']) !!}
                         @endif
-                            {!! Form::open(['method'=>'POST', 'url'=>'local']) !!}
-                            {!! Form::label('nome', 'Nome') !!}
-                            {!! Form::input('text', 'nome', null, ['class'=>'form-control','placeholder'=>'nome', 'required', 'maxlenght'=>50, 'autofocus']) !!}
+                            {!! Form::open(['method'=>'POST', 'url'=>'tipo']) !!}
+                            {!! Form::label('titulo', 'Titulo') !!}
+                            {!! Form::input('text', 'titulo', null, ['class'=>'form-control','placeholder'=>'titulo', 'required', 'maxlenght'=>50, 'autofocus']) !!}
                             {{-- {!! Form::submit('salvar', ['class'=>'float-end btn btn-primary mt-3']) !!} --}}
-                            {!! Form::label('endeco', 'Endeço') !!}
-                            {!! Form::input('text','endeco', null,['class'=>'form-control','placeholder'=>'Endeço','required','maxlenght'=>150,'autofocus']) !!}
+                            {!! Form::label('icone', 'Icone') !!}
+                            {!! Form::file('icone',
+                            ['class'=>'form-control  btn-sm']) !!}
                             {!! Form::submit('Salvar',['class' => 'float-end btn btn-primary mt-3']) !!}
                             {!! Form::close() !!}
 
